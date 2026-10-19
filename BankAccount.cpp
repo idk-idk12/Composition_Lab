@@ -218,10 +218,16 @@ void BankAccount::addTransaction(string type, double amount) {
 
 /**
  * Prints every recorded transaction for this account, showing its type,
- * amount, and timestamp, in the order the transactions occurred.
+ * amount, and timestamp, in the order the transactions occurred. Displays
+ * message if no transaction history yet exists.
  */
 void BankAccount::printHistory() {
-    for (auto transaction : this->transactionHistory) {
-	cout << transaction.type << "   $" << transaction.amount << "  " << transaction.timestamp << endl;
+    if (this->transactionHistory.empty()) {
+	cout << "No transaction history for selected account" << endl;
+    }
+    else {
+	for (auto transaction : this->transactionHistory) {
+	    cout << transaction.type << "   $" << transaction.amount << "  " << transaction.timestamp << endl;
+	}
     }
 }
